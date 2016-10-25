@@ -106,5 +106,5 @@ verifyBase.errMsg.common.maxLength = '{mark}内容至多{maxLength}位'
 var mark = '个性签名'
 var errMsg = verifyBase('maxLength')('个性签名', 3).err_msg
 console.log(verifyBase.macro(errMsg, 'mark', mark))
-// 输出：个性签名内容之多3位
+// 输出：个性签名内容至多3位
 ```
