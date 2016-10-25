@@ -93,10 +93,11 @@ verifyBase.errMsg.common.empty = '{mark}不能为空'
 ```
 ### 方法
 macro (msg, macro, value)<br>
-说明：用于替换报错信息中的'{}'内定义的关键字，一般用于封装校验插件时候使用<br>
+*说明：用于替换报错信息中的'{}'内定义的关键字，一般用于封装校验插件时候使用* <br>
 - msg(String):错误信息<br>
 - macro(String):关键字<br>
 - value(String):替换文本
+
 ### 示例
 ```
 // 修改或拓展报错信息
