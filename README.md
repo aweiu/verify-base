@@ -7,12 +7,12 @@ npm install verify-base
 ```
 ## 使用
 ```
-	import verifyBase from 'verify-base'
-	// 获取校验方法 name: 校验方法名
-	var verifySomeThing = verifyBase(name)
-	// 执行校验 val: 待校验的值 rule: 校验规则
-	verifySomeThing(val, rule)
-	// 返回：{valid: true / false, err_msg: 'xxx'}
+import verifyBase from 'verify-base'
+// 获取校验方法 name: 校验方法名
+var verifySomeThing = verifyBase(name)
+// 执行校验 val: 待校验的值 rule: 校验规则
+verifySomeThing(val, rule)
+// 返回：{valid: true / false, err_msg: 'xxx'}
 ```
 ### 支持的校验方法如下：
 * length: 校验文本长度
