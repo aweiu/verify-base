@@ -1,6 +1,6 @@
 {
   "name": "verify-base",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": {
     "name": "余阿伟"
   },
@@ -11,5 +11,8 @@
   },
   "dependencies": {
     "verify-identity-card": "0.x"
+  },
+  "engines": {
+    "node": ">=6.0"
   }
 }
