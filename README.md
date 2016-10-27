@@ -53,7 +53,7 @@ verifyBase(name, verifyFun)
 verifyBase('number6', (val, rule) => {
 	// 判断是否为6位数字
 	// 只需要关注错误的情况 返回出错提示即可
-	if (!verifyBase('number')(val).valid || !verifyBase('length')(val, 6)) return '请输入正确的6位数字验证码'
+	if (!verifyBase('number')(val).valid || !verifyBase('length')(val, 6)) return '请输入正确的6位数字'
 })
 // 调用
 verifyBase('number6')(123456)
