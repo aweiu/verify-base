@@ -42,10 +42,10 @@ console.log(verifyMaxNumber(1, 2))
 console.log(verifyMaxNumber(1, '!2'))
 ```
 ## 拓展校验规则
-｀｀｀
+```
 // name: 校验方法名 verifyFun: 校验方法
 verifyBase(name, verifyFun)
-｀｀｀
+```
 ### 示例
 ```
 // 新增校验是否为6位数字 val: 调用校验时传入的第一个参数 rule: 调用校验时传入的第二个参数
