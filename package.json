@@ -1,6 +1,16 @@
 {
   "name": "verify-base",
-  "version": "0.0.9",
+  "version": "0.1.0",
+  "description": "校验基础包，内含各种常用校验方法",
+  "keywords": [
+    "verify",
+    "validator",
+    "validator-base",
+    "verification",
+    "verification-base",
+    "check",
+    "check-base"
+  ],
   "author": {
     "name": "余阿伟"
   },
@@ -11,5 +21,6 @@
   },
   "dependencies": {
     "verify-identity-card": "0.x"
-  }
+  },
+  "license": "ISC"
 }
