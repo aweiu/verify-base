@@ -76,7 +76,8 @@ var rules = {
     if (!isNumber(val)) return macro(verifyErrMsg.number.common);
     val = val / 1;
     if (isNumber(_decimalLength)) {
-      if ((val + '').split('.')[1].length > _decimalLength) return macro(verifyErrMsg.number.decimalLength, 'decimalLength', _decimalLength);
+      var decimal = (val + '').split('.')[1];
+      if (decimal && decimal.length > _decimalLength) return macro(verifyErrMsg.number.decimalLength, 'decimalLength', _decimalLength);
     }
   },
   number: function number(val, isType) {

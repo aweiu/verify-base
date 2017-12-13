@@ -1,6 +1,6 @@
 {
   "name": "verify-base",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "校验基础包，内含各种常用校验方法",
   "keywords": [
     "verify",

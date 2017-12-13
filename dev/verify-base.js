@@ -2,19 +2,23 @@
  * Created by awei on 2016/7/5.
  */
 import isIdentityCard from 'verify-identity-card'
-var verifyErrMsg = require('./verify-err-msg')
+
+let verifyErrMsg = require('./verify-err-msg')
+
 function isNumber (val) {
   if (isNaN(val) || val === null || val === undefined || (val + '').trim() === '') return false
   return true
 }
+
 function macro (msg, macro, value) {
   if (!msg) msg = ''
   if (arguments.length === 3) {
-    var reg = new RegExp(`{${macro}}`, 'g')
+    const reg = new RegExp(`{${macro}}`, 'g')
     msg = msg.replace(reg, value)
   }
   return msg
 }
+
 function verify (ruleName, fun) {
   if (typeof fun === 'function') {
     if (rules.hasOwnProperty(ruleName)) return console.warn(`${ruleName} has be used,please replace one`)
@@ -22,8 +26,8 @@ function verify (ruleName, fun) {
   }
   if (rules.hasOwnProperty(ruleName)) {
     return function (val, arg) {
-      var errMsg = rules[ruleName](val, arg)
-      var valid = (errMsg === undefined)
+      const errMsg = rules[ruleName](val, arg)
+      const valid = (errMsg === undefined)
       return {
         valid: valid,
         err_msg: valid ? null : errMsg
@@ -31,7 +35,8 @@ function verify (ruleName, fun) {
     }
   }
 }
-var rules = {
+
+const rules = {
   length (val, length) {
     if (verify('int')(length).valid && val.length !== length / 1) return macro(verifyErrMsg.common.length, 'length', length)
   },
@@ -73,7 +78,8 @@ var rules = {
     if (!isNumber(val)) return macro(verifyErrMsg.number.common)
     val = val / 1
     if (isNumber(decimalLength)) {
-      if ((val + '').split('.')[1].length > decimalLength) return macro(verifyErrMsg.number.decimalLength, 'decimalLength', decimalLength)
+      const decimal = (val + '').split('.')[1]
+      if (decimal && decimal.length > decimalLength) return macro(verifyErrMsg.number.decimalLength, 'decimalLength', decimalLength)
     }
   },
   number (val, isType) {
@@ -87,7 +93,7 @@ var rules = {
   },
   phone (val, isType) {
     if (isType === false) return
-    var reg = /^1\d{10}$/
+    const reg = /^1\d{10}$/
     if (!reg.test(val)) return macro(verifyErrMsg.phone)
   },
   idCard (val, isType) {
@@ -96,20 +102,20 @@ var rules = {
   },
   bankCard (val, isType) {
     if (isType === false) return
-    var tmp = true
-    var total = 0
-    for (var i = val.length; i > 0; i--) {
-      var num = val.substring(i, i - 1)
+    let tmp = true
+    let total = 0
+    for (let i = val.length; i > 0; i--) {
+      let num = val.substring(i, i - 1)
       tmp = !tmp
-      if (tmp)num = num * 2
-      var gw = num % 10
+      if (tmp) num = num * 2
+      const gw = num % 10
       total += (gw + (num - gw) / 10)
     }
     if (total % 10 !== 0) return macro(verifyErrMsg.bankCard)
   },
   email (val, isType) {
     if (isType === false) return
-    var reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     if (!reg.test(val)) return macro(verifyErrMsg.email)
   },
   verifyCode (val, isType) {
@@ -119,8 +125,8 @@ var rules = {
 }
 verify.macro = macro
 verify.errMsg = verifyErrMsg
-Object.defineProperty(verify, "errMsg", {
-  set: v => verifyErrMsg = v,
+Object.defineProperty(verify, 'errMsg', {
+  set: v => (verifyErrMsg = v),
   get: () => verifyErrMsg
 })
 export default verify
